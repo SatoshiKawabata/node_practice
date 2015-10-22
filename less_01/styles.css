@@ -1,0 +1,45 @@
+h1 {
+  font-size: 24px;
+  color: red;
+  background: url("/img/bg.png");
+}
+h2 {
+  font-size: 20px;
+  color: #cc0000;
+}
+/*
+コメント
+*/
+header {
+  font-size: 18px;
+}
+header a {
+  color: red;
+}
+header a:hover {
+  color: green;
+}
+.button-ok {
+  color: green;
+  border: 50px solid red;
+  padding: 10px;
+  margin: 7px;
+}
+.button-ng {
+  color: red;
+  border: 5px solid red;
+  padding: 7px;
+  margin: 7px;
+}
+.btn,
+.btn-ok,
+.btn-ng {
+  font-size: 14px;
+  border: 1px solid black;
+}
+.btn-ok {
+  color: green;
+}
+.btn-ng {
+  color: red;
+}

@@ -1,0 +1,71 @@
+
+@h1-color: red;
+@h2-color: darken(@h1-color, 10%);
+@h1-size: 24px;
+@h2-size: @h1-size - 4px;
+
+@header: h;
+@color : color;
+@dir: "/img";
+
+@{header}1 {
+	font-size : @h1-size;
+	@{color} : @h1-color;
+	background: url("@{dir}/bg.png");
+}
+
+@{header}2 {
+	font-size: @h2-size;
+	@{color}: @h2-color;
+}
+
+/*
+コメント
+*/
+
+header {
+	font-size: 18px;
+	a {
+		color: red;
+		// 親要素
+		&:hover{
+			color: green;
+		}
+	}
+}
+
+.button {
+	&-ok {
+		color: green;
+		.my-mixin(50px, 10px);
+	}
+	&-ng {
+		color: red;
+		.my-mixin();
+	}
+}
+
+// mixin
+.my-mixin(@size:5px; @padding:7px) {
+	border: @size solid red;
+	padding: @padding;
+	margin: 7px;
+}
+
+// extend
+.btn {
+	font-size: 14px;
+	border: 1px solid black;
+}
+
+.btn-ok {
+	&:extend(.btn);
+	//.btn();
+	color: green;
+}
+
+.btn-ng {
+	&:extend(.btn);
+	//.btn();
+	color: red;		
+}
