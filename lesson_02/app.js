@@ -17,9 +17,19 @@ function handler(req, res) {
 		res.end();
 	});
 }
+
 io.sockets.on('connection', function(socket) {
-	console.log("aaaaaaaaaaaa");
 	socket.on('emit_from_client', function(data) {
-		console.log(data);
+		// 接続しているソケットのみ
+		// socket.emit('emit_from_server', 'hello from server: ' + data);
+		
+		// 接続しているソケット以外全部
+		// socket.broadcast.emit('emit_from_server', 'hello from server: ' + data);
+
+		// 接続しているソケット全部
+		// io.sockets.emit('emit_from_server', '[' + socket.id + '] : ' + data);
+
+		socket.client_name = data.name;
+		io.sockets.emit('emit_from_server', '[' + socket.client_name + '] : ' + data.msg);
 	});
 });
