@@ -1,10 +1,11 @@
+/*! style */
 h1 {
   font-size: 24px;
   color: red;
   background: url("/img/bg.png");
 }
 h2 {
-  font-size: 20px;
+  font-size: 19px;
   color: #cc0000;
 }
 /*
@@ -42,4 +43,7 @@ header a:hover {
 }
 .btn-ng {
   color: red;
+}
+p {
+  margin-left: 10px;
 }

@@ -1,0 +1,42 @@
+h1 {
+  font-color: red;
+}
+h2 {
+  font-color: red;
+}
+header {
+  font-size: 18px;
+}
+header a {
+  color: red;
+}
+/*.button {
+	&-ok {
+		color: green;
+		.mixin();
+	}
+	&-ng {
+		color: red;
+		.mixin(10px, 8px);
+	}
+}
+
+.mixin(@size:5px; @padding:7px) {
+	border: @size solid red;
+	padding: @padding;
+	margin: 7px;
+}*/
+.button {
+  font-size: 14px;
+  border: 1px solid black;
+}
+.button-ok {
+  font-size: 14px;
+  border: 1px solid black;
+  color: green;
+}
+.button-ng {
+  font-size: 14px;
+  border: 1px solid black;
+  color: red;
+}
