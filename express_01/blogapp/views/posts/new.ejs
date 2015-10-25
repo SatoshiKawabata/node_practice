@@ -1,0 +1,10 @@
+<% include ../header %>
+<h1>新規作成</h1>
+<form method="post" action="/posts/create">
+	タイトル: <input type="text" name="title" /><br/>
+	記事内容: <input type="text" name="body" /><br/>
+	<% include ../csrftoken %>
+	<input type="submit" value="作成" />
+</form>
+<% include ../goback %>
+<% include ../footer %>
