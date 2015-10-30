@@ -1,0 +1,13 @@
+/*** uncss> filename: src/test.css ***/
+
+h1 {
+  background-color: red;
+}
+
+h1 {
+  background-size: 10px;
+}
+
+.temp {
+  font-size: 30px;
+}
