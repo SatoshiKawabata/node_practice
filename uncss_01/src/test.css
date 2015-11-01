@@ -1,5 +1,3 @@
-/*** uncss> filename: src/test.css ***/
-
 h1 {
   background-color: red;
 }
@@ -10,4 +8,12 @@ h1 {
 
 .temp {
   font-size: 30px;
+}
+
+.test {
+	float: left;
+}
+
+li {
+	color: blue;
 }

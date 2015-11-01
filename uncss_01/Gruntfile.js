@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 		uncss : {
 			dist : {
 				files : {
-					'src/test.css' : ['src/test.html']
+					'src/all.css' : ['src/test.html']
 				}
 			}
 		}
