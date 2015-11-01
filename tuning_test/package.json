@@ -15,6 +15,7 @@
     "grunt-contrib-cssmin": "~0.14.0",
     "grunt-contrib-htmlmin": "~0.6.0",
     "grunt-uncss": "~0.4.3",
-    "grunt-image": "~1.1.1"
+    "grunt-image": "~1.1.1",
+    "grunt-csso": "~0.8.0"
   }
 }
