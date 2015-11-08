@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 				dest : 'src/files/all.js'
 			}
 		},
-		// タブインデント・改行を除き、難読化する。
+		// jsのタブインデント・改行を除き、難読化する。
 		uglify : {
 			dist : {
 				files : {
