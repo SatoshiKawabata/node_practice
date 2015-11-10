@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	var TEST_URL = 'http://localhost/index.min.html';
 	var TEST_DIR = 'test/';
 	var CMD_COMPARE = 'compare -metric AE ' + TEST_DIR + 'target.png ' + TEST_DIR + 'origin.png ' + TEST_DIR + 'diff.jpg';
-	var CMD_PHANTOM = 'phantomjs phantom/pageload.js ';
+	var CMD_PHANTOM = 'phantomjs --disk-cache=false phantom/pageload.js ';
 
 	var HTML_PATH = './src/index.html';
 

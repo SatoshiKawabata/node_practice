@@ -4,7 +4,7 @@ var page = require('webpage').create(),
     outName,
     address,
     // 元のサイトの速度
-    ORIGIN_TIME = 1023;
+    ORIGIN_TIME = 1256;
 
 if (system.args.length === 1) {
     console.log('Usage: pageload.js <some URL>');
