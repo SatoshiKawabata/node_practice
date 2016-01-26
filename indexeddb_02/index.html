@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>IndexedDB</title>
+</head>
+<body>
+
+<script>
+var myDBModule = {
+  idb: null,
+  storeNames: [],
+  stores: {},
+
+  dampInfo: {
+    storeName: '',
+    valueName: '',
+    exception: null
+  }
+};
+
+
+myDBModule.init = function(dbName) {
+  var req = window.indexedDB.open(dbName);
+
+  req.onsuccess = function(e) {
+    this.idb = e.target.result;
+    this.storeNames = this.idb.objectStoreNames;
+    console.log('success : ', this.idb);
+    this.getAll();
+  }.bind(this);
+}
+
+myDBModule.getAll = function() {
+  var storeIndex = 0;
+  var recursive = function(storeName) {
+    var tx = this.idb.transaction([storeName], IDBTransaction.READ_WRITE);
+    var store = tx.objectStore(storeName);
+    var range = IDBKeyRange.lowerBound(0);
+    var cursorRequest = store.openCursor(range);
+
+    cursorRequest.onsuccess = function(e) {
+      var result = e.target.result;
+      if (!!result == false) {
+        storeIndex++;
+        if (this.storeNames.length <= storeIndex) {
+          console.log('complete');
+          return;
+        }
+
+        recursive(this.storeNames[storeIndex]);
+        return;
+      }
+
+      if (!this.stores[storeName]) {
+        this.stores[storeName] = {};
+      }
+      this.stores[storeName][result.key] = result.value;
+      console.log(result);
+
+      result.continue();
+
+    }.bind(this);
+  }.bind(this);
+  recursive(this.storeNames[storeIndex]);
+}
+
+myDBModule.damp = function() {
+  var storeDatas = this.stores[this.dampInfo.storeName];
+  var valueName = this.dampInfo.valueName;
+  var exception = this.dampInfo.exception;
+  var length = 0;
+  for (var key in storeDatas) {
+    var data = storeDatas[key];
+    if (exception != null){
+      if (exception == data[valueName]){
+        console.log(data);
+      }
+    } else {
+      console.log(data[valueName]);
+    }
+    length++;
+  }
+  console.log('length', length);
+}
+
+myDBModule.init('my_test');
+</script>
+</body>
+</html>
+

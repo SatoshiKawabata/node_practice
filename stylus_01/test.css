@@ -1,0 +1,30 @@
+body {
+  padding: 0;
+above(1000px)
+}
+.inner {
+  display: block;
+  color: #f00;
+}
+.inner__cover:hover {
+  color: #00f;
+}
+.inner__cover:hover .btn {
+  color: #00f;
+}
+.btn {
+  color: #008000;
+}
+.title {
+  color: #00f;
+above(1000px)
+}
+a {
+  text-decoration: none;
+}
+.link a {
+  color: #f00;
+}
+.link a:hover {
+  text-decoration: underline;
+}

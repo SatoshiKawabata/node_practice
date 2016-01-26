@@ -1,0 +1,42 @@
+fonts = helvetica, arial, sans-serif
+scale = 0 1100 1380 1610 3800
+
+body
+  padding 0;
+  +above(1000px)
+    padding 100px;
+
+.inner
+  display block
+  color red
+
+  &__cover
+    &:hover
+      color blue
+      .btn
+        color blue
+
+.btn
+  color green
+
+
+.title
+  color blue
+  +above(1000px)
+    color red
+
+a
+  text-decoration none
+
+bp-col2 = 1170px
+bp-col3 = 1420px
+
+.link 
+  a
+    color red
+  a:hover
+    text-decoration underline
+
+  +between(bp-col2,bp-col3)
+      width 33.33%
+      color blue

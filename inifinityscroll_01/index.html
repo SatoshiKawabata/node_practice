@@ -1,0 +1,56 @@
+<html class=" -webkit-"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><link rel="canonical" href="http://codepen.io/kwst/pen/adLgLP">
+
+<link rel="stylesheet prefetch" href="//codepen.io/assets/reset/reset.css"><script src="//codepen.io/assets/libs/prefixfree.min.js"></script>
+<style class="cp-pen-styles">*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Monaco, Consolas,monospace;
+}
+
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.item {
+  opacity: 0;
+  animation: 300ms appear 30ms ease-in-out forwards;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  text-shadow: 1px -1px 0 black;
+  background: #0032af;
+  margin: 4px;
+  color: white;
+  transition: all 333ms ease-in-out;
+  transition-delay: 100ms;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #00a !important;
+}
+
+.loader {
+  text-align: center;
+}</style>
+</head>
+<body>
+<div class="scroll-holder" data-reactid=".0">
+  <div data-reactid=".0.0">
+    <div class="loader" data-reactid=".0.0.1"> - </div>
+  </div>
+</div>
+<script src="//codepen.io/assets/editor/live/css_live_reload_init.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>

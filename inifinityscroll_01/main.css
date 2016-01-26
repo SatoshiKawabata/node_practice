@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Monaco, Consolas,monospace;
+}
+
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.item {
+  opacity: 0;
+  animation: 300ms appear 30ms ease-in-out forwards;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  text-shadow: 1px -1px 0 black;
+  background: #0032af;
+  margin: 4px;
+  color: white;
+  transition: all 333ms ease-in-out;
+  transition-delay: 100ms;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #00a !important;
+}
+
+.loader {
+  text-align: center;
+}

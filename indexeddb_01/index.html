@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>IndexedDB</title>
+  <script src="./main.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+<body>
+  <input type="text" id="todo-text" value="">
+  <input type="submit" value="add" onclick="module.add();">
+  <ul id="todo-list">
+  </ul>
+
+<script>
+var req = window.indexedDB.open('my_test');
+req.onsuccess = function(e) {
+  console.log(e);
+}
+</script>
+</body>
+</html>
