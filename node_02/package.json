@@ -1,0 +1,14 @@
+{
+  "name": "node_02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fortune.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^2.4.1"
+  }
+}

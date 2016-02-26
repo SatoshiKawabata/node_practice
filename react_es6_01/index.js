@@ -1,48 +1,109 @@
 'use_strict';
 
 import React from 'react';
+import Router, { Route, NotFoundRoute, DefaultRoute } from 'react-router';
 import CommentBox from './components/CommentBox';
+import ButtonTest from './components/ButtonTest';
+import App from './components/App';
 
-let data = {
-  genreStations: {
-    stations: [
-      {
-        seed: {
-          genre: 'p-o-p',
-        },
-      },
-      {
-        seed: {
-          genre: 'r-o-c-k',
-        },
-      },
-    ],
-  },
-};
+// var App = React.craeteClass({
+//   render: function() {
+//     return (
+//       <div>
+//         <header>
+//           <ul>
+//             <li><Link to='app'>ダッシュボード</Link></li>
+//             <li><Link to='inbox'>インボックス</Link></li>
+//             <li><Link to='calendar'>カレンダー</Link></li>
+//           </ul>
+//         </header>
+//         <RouteHandler />
+//       </div>
+//     )
+//   }
+// });
 
-React.render(
-  <CommentBox url='comments.json' pollInterval={2000} />,
-  document.getElementById('container')
+var routes = (
+  <Route name='app' path='/' handler={App}>
+    <Route name='inbox' handler={CommentBox} />
+    <Route name='calendar' handler={ButtonTest} />
+    <DefaultRoute handler={CommentBox} />
+  </Route>
 );
 
-function setTimeoutAsync(delay) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(resolve, delay);
-  });
-}
+// Router.run(routes, function(Handler) {
+//   React.render(<Handler/>, document.getElementById('container'));
+// });
 
-var temp = setTimeoutAsync(1000)
-  .then(function(e) {
-    console.log('promise', e);
-  })
-  .then(function() {
-    return new Promise(function(resolve, reject) {
-      console.log('promise2');
-      resolve();
-    })
-  })
-  .then(function() {
-    console.log('done');
-  });
+React.render(<Router>{routes}</Router>, document.getElementById('container'));
 
-console.log(temp);
+
+// React.render(
+//   <div>
+//   <CommentBox url='comments.json' pollInterval={2000} />
+//   <ButtonTest />
+//   </div>,
+//   document.getElementById('container')
+// );
+
+
+// var Header = React.createClass({
+//   render: function () {
+//     return (
+//       <header>
+//         <ul>
+//           <li><a href="/">Dashboard</a></li>
+//           <li><a href="/inbox">Inbox</a></li>
+//           <li><a href="/calendar">Calendar</a></li>
+//         </ul>
+//         Logged in as Jane
+//       </header>
+//     );
+//   }
+// });
+
+// var DashboardRoute = React.createClass({
+//   render: function () {
+//     return (
+//       <div>
+//         <Header/>
+//         <ButtonTest/>
+//       </div>
+//     );
+//   }
+// });
+
+// var InboxRoute = React.createClass({
+//   render: function () {
+//     return (
+//       <div>
+//         <Header/>
+//         <CommentBox/>
+//       </div>
+//     );
+//   }
+// });
+
+// var CalendarRoute = React.createClass({
+//   render: function () {
+//     return (
+//       <div>
+//         <Header/>
+//         <CommentBox/>
+//         <ButtonTest/>
+//       </div>
+//     );
+//   }
+// });
+
+// otherRouter.route('/', function () {
+//   React.render(<DashboardRoute/>, document.body);
+// });
+
+// otherRouter.route('/inbox', function () {
+//   React.render(<InboxRoute/>, document.body);
+// });
+
+// otherRouter.route('/calendar', function () {
+//   React.render(<CalendarRoute/>, document.body);
+// });
