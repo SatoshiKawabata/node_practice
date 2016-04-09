@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>GoogleMap practice</title>
+  <script src="./jquery-1.12.1.min.js"></script>
+  <style>
+  html,
+  body {
+    height: 100%;
+  }
+  #map {
+    width: 300px;
+    height: 500px;
+    /*height: 100%;*/
+  }
+
+  .memo__title {
+    display: block;
+  }
+  .memo__textarea {
+    display: block;
+  }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    function initMap() {
+
+
+      function Memo(title, body) {
+        this.title = title;
+        this.body = body;
+      }
+
+      function Marker(options, memo) {
+        this.memo = memo;
+        this.id = new Date().getTime();
+        var marker = new google.maps.Marker(options);
+        var _onClick;
+        marker.addListener('click', (function(e) {
+          _onClick(this);
+        }).bind(this));
+        this.marker = marker;
+
+        this.onClick = function(handler) {
+          _onClick = handler;
+        }
+
+        this.setMemo = function(title, body) {
+          this.memo = new Memo(title, body);
+        }
+      }
+
+      // マップ初期化
+      var mapDiv = document.getElementById('map');
+      var latlng = new google.maps.LatLng(35.64799971647276, 139.69326362013817);
+      var options = {
+        zoom: 15,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(mapDiv, options);
+      // カスタムアイコン
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+      // addMarker({
+      //   position: latlng,
+      //   map: map,
+      //   icon: iconBase + 'schools_maps.png'
+      // });
+
+      // マップクリックイベント
+      map.addListener('click', function(e) {
+        console.log('map click', e);
+        addMarker({
+          position: e.latLng,
+          map: map,
+          icon: iconBase + 'schools_maps.png'
+        });
+      });
+
+      function addMarker(options) {
+        var marker = new Marker(options);
+        marker.onClick(function(marker) {
+          setInfoWindow(marker);
+          // var id = 'memo_' + (new Date().getTime());
+          // var contentStr = '<div id="' + id + '">a</div';
+          // var infoWidow = new google.maps.InfoWindow({
+          //   content: contentStr
+          // });
+          // infoWidow.addListener('domready', function(e) {
+          //   $('#' + id + '').load('./external.html');
+          // });
+          // infoWidow.open(map, marker);
+        });
+      }
+
+      function setInfoWindow(marker) {
+        var content = marker.memo ? createMemoContent(marker.memo) : createMemoForm(marker.id);
+        var infoWidow = new google.maps.InfoWindow({
+          content: content
+        });
+        infoWidow.addListener('domready', function(e) {
+          $('#memo__' + marker.id + '').submit(function(e) {
+            console.log('on submit', e);
+            var form = e.target;
+            var memoTitle = form[0].value;
+            var memoBody = form[1].value;
+            marker.setMemo(memoTitle, memoBody);
+            infoWidow.close();
+            return false;
+          });
+        });
+        infoWidow.open(map, marker.marker);
+      }
+
+      function createMemoContent(memo) {
+        var title = memo.title;
+        var body = memo.body;
+        var content = '<h1>' + title + '</h1><div>' + body + '</div>';
+        return content;
+      }
+
+      function createMemoForm(id) {
+        return '<form action="#" id="memo__' + id + '"> <input class="memo__title" type="text" name="title" value="" placeholder="title"> <textarea class="memo__textarea" name="memo" rows="4" cols="40" placeholder="memo"></textarea> <input type="submit" value="save" /> </form>';
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+</body>
+</html>
